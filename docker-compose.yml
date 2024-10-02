@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  dev-db:
+    image: postgres:16
+    ports:
+      - "3000:3000"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 990210
+      POSTGRES_DB: datastore
