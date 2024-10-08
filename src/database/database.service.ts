@@ -7,11 +7,11 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
 
   constructor() {
     this.pool = new Pool({
-      user: process.env.DB_USER,
-      host: process.env.DB_HOST,
-      database: process.env.DB_NAME,
-      password: '990210',  
-      port: Number(process.env.DB_PORT),
+      user: "postgres",
+      host:"localhost",
+      database: "datastore", // Use the correct env variable
+      password: "990210",  // Use env variable for password
+      port: Number(5432),
     });
   }
 

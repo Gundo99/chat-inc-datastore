@@ -1,11 +1,11 @@
-import { Controller, Post, Body, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Request, Get } from '@nestjs/common';
 import { NumbersService } from './numbers.service';
 import { AddNumbersDto } from './dto/add-numbers.dto';
 import { CheckNumbersDto } from './dto/check-numbers.dto';
 import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('numbers')
-@UseGuards(AuthGuard)
+//@UseGuards(AuthGuard)
 export class NumbersController {
   constructor(private readonly numbersService: NumbersService) {}
 
@@ -19,5 +19,10 @@ export class NumbersController {
   @Post('check')
   checkNumbers(@Body() checkNumbersDto: CheckNumbersDto) {
     return this.numbersService.checkNumbers(checkNumbersDto);
+  }
+
+  @Get('recent')
+  getRecentNumbers() {
+    return this.numbersService.getRecentNumbers();
   }
 }

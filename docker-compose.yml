@@ -3,8 +3,8 @@ services:
   dev-db:
     image: postgres:16
     ports:
-      - "3000:3000"
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 990210
+      POSTGRES_PASSWORD: "990210"
       POSTGRES_DB: datastore

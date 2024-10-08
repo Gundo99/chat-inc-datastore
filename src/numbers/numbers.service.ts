@@ -34,4 +34,15 @@ export class NumbersService {
 
     return { numbers: response };
   }
+
+  async getRecentNumbers() {
+    const query = `
+      SELECT uid as id, telephone_number, has_whatsapp, date_added
+      FROM numbers
+      ORDER BY date_added DESC
+      LIMIT 10
+    `;
+    const result = await this.databaseService.executeQuery(query);
+    return result.rows;
+  }
 }
