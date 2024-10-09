@@ -12,6 +12,8 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
       database: "datastore", // Use the correct env variable
       password: "990210",  // Use env variable for password
       port: Number(5432),
+      idleTimeoutMillis: 30000,  // Set a higher idle timeout
+      connectionTimeoutMillis: 20000, // Set a higher connection timeout
     });
   }
 

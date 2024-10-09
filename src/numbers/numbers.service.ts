@@ -7,17 +7,20 @@ import { CheckNumbersDto } from './dto/check-numbers.dto';
 export class NumbersService {
   constructor(private readonly databaseService: DatabaseService) {}
 
-  async addNumbers(addNumbersDto: AddNumbersDto, userUid: number) {
-    for (const numberEntry of addNumbersDto.numbers) {
-      await this.databaseService.addNumber(
-        numberEntry.telephone_number,
-        numberEntry.has_whatsapp,
-        userUid
-      );
-    }
-    return { message: 'Numbers added successfully' };
+  async addNumbers(addNumbersDto: AddNumbersDto) {
+    // Extract the properties from the addNumbersDto
+    const { telephone_number, has_whatsapp, id } = addNumbersDto;
+  
+    // Call the database service to add the number
+    await this.databaseService.addNumber(
+      telephone_number,
+      has_whatsapp,
+      id
+    );
+  
+    return { message: 'Number added successfully' };
   }
-
+  
   async checkNumbers(checkNumbersDto: CheckNumbersDto) {
     const checkedNumbers = await this.databaseService.checkNumbers(checkNumbersDto.numbers);
     

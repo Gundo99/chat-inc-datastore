@@ -13,4 +13,8 @@ export class CreateUserDto {
   @IsString()
   @IsOptional()
   api_key?: string;
+
+  @IsString()
+  @IsOptional()
+  fullName?: string;
 }

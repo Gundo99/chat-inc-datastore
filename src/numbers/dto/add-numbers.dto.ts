@@ -1,17 +1,13 @@
-import { IsArray, IsString, IsBoolean, ValidateNested } from 'class-validator';
+import { IsArray, IsString, IsBoolean, IsNumber} from 'class-validator';
 import { Type } from 'class-transformer';
 
-class NumberEntry {
+export class AddNumbersDto {
   @IsString()
   telephone_number: string;
 
   @IsBoolean()
   has_whatsapp: boolean;
-}
 
-export class AddNumbersDto {
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => NumberEntry)
-  numbers: NumberEntry[];
+  @IsNumber()
+  id: number; // Changed to be a number instead of an array
 }

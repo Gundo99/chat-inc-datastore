@@ -5,15 +5,14 @@ import { CheckNumbersDto } from './dto/check-numbers.dto';
 import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('numbers')
-//@UseGuards(AuthGuard)
+ //@UseGuards(AuthGuard)
 export class NumbersController {
   constructor(private readonly numbersService: NumbersService) {}
 
   @Post('add')
   addNumbers(@Body() addNumbersDto: AddNumbersDto, @Request() req) {
     // Assuming the AuthGuard adds the user to the request object
-    const userUid = req.user.uid;
-    return this.numbersService.addNumbers(addNumbersDto, userUid);
+    return this.numbersService.addNumbers(addNumbersDto);
   }
 
   @Post('check')
